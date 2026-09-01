@@ -1,0 +1,239 @@
+.cust-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cust-header > * + * {
+  margin-top: 0.25rem;
+}
+
+.cust-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.cust-subtitle {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.cust-stats-row {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .cust-stats-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cust-stat-card {
+  background-color: #0f172a;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cust-stat-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.cust-stat-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.cust-stat-icon-box {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+}
+
+.cust-main-box {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.cust-search-bar {
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+  background-color: rgba(15, 23, 42, 0.5);
+}
+
+.cust-search-input-box {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.cust-search-input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.25rem;
+  border: 1px solid #1e293b;
+  background-color: #020617;
+  color: #f1f5f9;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.cust-search-input::placeholder {
+  color: #64748b;
+}
+
+.cust-search-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 1px #10b981;
+}
+
+.cust-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.cust-grid > * + * {
+  border-top: 1px solid #1e293b;
+}
+
+.cust-item {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .cust-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cust-item:hover {
+  background-color: rgba(30, 41, 59, 0.2);
+}
+
+.cust-item-details {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.cust-logo-box {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #020617;
+  border: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.cust-name-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cust-name {
+  font-weight: 700;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.cust-badge {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+
+.cust-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.cust-meta-text {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cust-meta-value {
+  color: #cbd5e1;
+}
+
+.cust-spent-box {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: #020617;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid #1e293b;
+  align-self: flex-end;
+}
+
+@media (min-width: 640px) {
+  .cust-spent-box {
+    align-self: center;
+  }
+}
+
+.cust-spent-item {
+  text-align: center;
+}
+
+.cust-spent-label {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.cust-spent-value {
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: block;
+  margin-top: 0.125rem;
+}
+
+.cust-divider {
+  width: 1px;
+  height: 1.5rem;
+  background-color: #1e293b;
+}

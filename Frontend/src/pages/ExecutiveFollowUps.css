@@ -1,0 +1,467 @@
+.eflw-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eflw-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .eflw-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.eflw-header > div > * + * {
+  margin-top: 0.25rem;
+}
+
+.eflw-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.eflw-subtitle {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.eflw-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eflw-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .eflw-card {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.eflw-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.eflw-card-details > * + * {
+  margin-top: 0.5rem;
+}
+
+.eflw-card-details {
+  flex: 1 1 0%;
+}
+
+.eflw-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eflw-meta-row .border {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.eflw-status-completed {
+  color: #34d399;
+  background-color: rgba(6, 95, 70, 0.3);
+  border-color: rgba(6, 95, 70, 0.6);
+}
+
+.eflw-status-pending {
+  color: #60a5fa;
+  background-color: rgba(30, 58, 138, 0.3);
+  border-color: rgba(30, 58, 138, 0.6);
+}
+
+.eflw-status-scheduled {
+  color: #818cf8;
+  background-color: rgba(49, 46, 129, 0.3);
+  border-color: rgba(49, 46, 129, 0.6);
+}
+
+.eflw-status-overdue {
+  color: #f87171;
+  background-color: rgba(153, 27, 27, 0.3);
+  border-color: rgba(153, 27, 27, 0.6);
+}
+
+.eflw-status-default {
+  color: #94a3b8;
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.eflw-type-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  font-weight: 500;
+  background-color: #020617;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  border: 1px solid #1e293b;
+}
+
+.eflw-id-text {
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: #64748b;
+}
+
+.eflw-name {
+  font-weight: 700;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.eflw-company {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.eflw-notes {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+}
+
+.eflw-action-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid rgba(30, 41, 59, 0.4);
+  padding-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .eflw-action-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .eflw-action-row {
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+.eflw-date-box {
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .eflw-date-box {
+    text-align: right;
+  }
+}
+
+.eflw-date-label {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.eflw-date-value {
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  font-family: monospace;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.eflw-complete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #065f46;
+  color: #34d399;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: transparent;
+}
+
+.eflw-complete-btn:hover {
+  background-color: rgba(6, 78, 59, 0.4);
+}
+
+.eflw-complete-btn:active {
+  transform: scale(0.98);
+}
+
+/* Schedule Button */
+.eflw-schedule-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border: none;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(4, 120, 87, 0.2), 0 2px 4px -1px rgba(4, 120, 87, 0.1);
+  align-self: flex-start;
+}
+
+@media (min-width: 640px) {
+  .eflw-schedule-btn {
+    align-self: auto;
+  }
+}
+
+.eflw-schedule-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(4, 120, 87, 0.3), 0 4px 6px -2px rgba(4, 120, 87, 0.15);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.eflw-schedule-btn:active {
+  transform: translateY(0);
+}
+
+/* Modal Styling */
+.eflw-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.eflw-modal-content {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.eflw-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.eflw-modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.eflw-modal-close-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.eflw-modal-close-btn:hover {
+  color: #f1f5f9;
+}
+
+.eflw-modal-form {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.eflw-modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.eflw-modal-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.eflw-modal-field input,
+.eflw-modal-field select,
+.eflw-modal-field textarea {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 0.625rem 0.875rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.eflw-modal-field textarea {
+  resize: vertical;
+}
+
+.eflw-modal-field input:focus,
+.eflw-modal-field select:focus,
+.eflw-modal-field textarea:focus {
+  border-color: #059669;
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2);
+}
+
+.eflw-modal-datetime-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.eflw-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.eflw-modal-btn {
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.eflw-modal-btn.secondary {
+  background-color: transparent;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+}
+
+.eflw-modal-btn.secondary:hover {
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.eflw-modal-btn.primary {
+  background-color: #059669;
+  border: 1px solid transparent;
+  color: #ffffff;
+}
+
+.eflw-modal-btn.primary:hover {
+  background-color: #059669;
+  filter: brightness(1.1);
+}
+
+/* Loading & Empty States */
+.eflw-loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  color: #94a3b8;
+  gap: 1rem;
+}
+
+.eflw-loading-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  border-top-color: #059669;
+  border-radius: 50%;
+  animation: spinnerRotate 0.8s linear infinite;
+}
+
+@keyframes spinnerRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.eflw-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background-color: #0f172a;
+  border: 1px dashed #334155;
+  border-radius: 0.75rem;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.eflw-empty-state h3 {
+  color: #f1f5f9;
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.eflw-empty-state p {
+  font-size: 0.875rem;
+  margin: 0;
+}

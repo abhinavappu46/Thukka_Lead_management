@@ -1,0 +1,473 @@
+.enq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.enq-header-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .enq-header-box {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.enq-title-box > * + * {
+  margin-top: 0.25rem;
+}
+
+.enq-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.enq-subtitle {
+  color: #94a3b8;
+  font-size: 0.875rem;
+}
+
+.enq-new-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background-color: #059669;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 0;
+}
+
+.enq-new-btn:hover {
+  background-color: #10b981;
+}
+
+.enq-new-btn:active {
+  transform: scale(0.98);
+}
+
+.enq-stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .enq-stats-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.enq-stat-card {
+  background-color: #0f172a;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.enq-stat-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.enq-stat-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.enq-stat-icon-box {
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+}
+
+.enq-table-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.enq-controls-bar {
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+  background-color: rgba(15, 23, 42, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .enq-controls-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.enq-search-box {
+  position: relative;
+  flex: 1 1 0%;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.enq-search-input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 2.25rem;
+  border: 1px solid #1e293b;
+  background-color: #020617;
+  color: #f1f5f9;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.enq-search-input::placeholder {
+  color: #64748b;
+}
+
+.enq-search-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 1px #10b981;
+}
+
+.enq-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.enq-filter-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.enq-filter-tabs {
+  display: flex;
+  background-color: #020617;
+  border-radius: 0.5rem;
+  padding: 0.125rem;
+  border: 1px solid #1e293b;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.enq-filter-tab {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+
+.enq-table-wrapper {
+  overflow-x: auto;
+}
+
+.enq-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.enq-th {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1e293b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  background-color: rgba(2, 6, 23, 0.6);
+}
+
+.enq-tr {
+  transition: background-color 0.2s ease;
+}
+
+.enq-tr:hover {
+  background-color: rgba(30, 41, 59, 0.4);
+}
+
+.enq-td-details {
+  padding: 1rem 1.5rem;
+}
+
+.enq-td-name {
+  font-weight: 600;
+  color: #e2e8f0;
+  padding-left: 20px;
+}
+
+.enq-td-id {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: monospace;
+  margin-top: 0.125rem;
+  padding-left: 20px;
+}
+
+.enq-td-company {
+  padding: 1rem 1.5rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.enq-contact-info {
+  padding: 1rem 1.5rem;
+}
+
+.enq-contact-info > * + * {
+  margin-top: 0.25rem;
+}
+
+.enq-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.enq-source-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  background-color: #020617;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #1e293b;
+}
+
+.enq-priority-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid;
+}
+
+.enq-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+
+.enq-date-text {
+  padding: 1rem 1.5rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-family: monospace;
+}
+
+.enq-action-btn {
+  color: #64748b;
+  padding: 0.375rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+.enq-action-btn:hover {
+  color: #cbd5e1;
+  background-color: #1e293b;
+}
+
+.enq-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 1rem;
+  animation: enqFadeIn 0.2s ease-out forwards;
+}
+
+.enq-modal {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+  width: 100%;
+  max-width: 32rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  animation: enqScaleUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes enqFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes enqScaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.enq-modal-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+.enq-modal-title {
+  font-weight: 700;
+  color: #f1f5f9;
+  font-size: 1.125rem;
+}
+
+.enq-modal-close-btn {
+  color: #94a3b8;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.enq-modal-close-btn:hover {
+  color: #f1f5f9;
+}
+
+.enq-modal-form {
+  padding: 1.5rem;
+}
+
+.enq-modal-form > * + * {
+  margin-top: 1rem;
+}
+
+.enq-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.enq-form-field > * + * {
+  margin-top: 0.375rem;
+}
+
+.enq-form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.enq-form-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #1e293b;
+  background-color: #020617;
+  color: #f1f5f9;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.enq-form-input:focus {
+  border-color: #10b981;
+}
+
+.enq-form-select {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #1e293b;
+  background-color: #020617;
+  color: #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.enq-form-select:focus {
+  border-color: #10b981;
+}
+
+.enq-form-footer {
+  padding-top: 1rem;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.enq-cancel-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #1e293b;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #94a3b8;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.enq-cancel-btn:hover {
+  background-color: #1e293b;
+}
+
+.enq-save-btn {
+  padding: 0.5rem 1rem;
+  background-color: #059669;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  border: 0;
+  transition: background-color 0.2s ease;
+}
+
+.enq-save-btn:hover {
+  background-color: #10b981;
+}
