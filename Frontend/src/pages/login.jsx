@@ -90,7 +90,7 @@ function Login() {
               required
               className="login-input"
               placeholder="name@company.com"
-              value={email}
+              // value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -108,7 +108,7 @@ function Login() {
                 required
                 className="login-input"
                 placeholder="••••••••"
-                value={password}
+                // value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ paddingRight: '2.5rem' }}
               />

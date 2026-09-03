@@ -591,6 +591,7 @@ function AdminDashboard() {
                 >
                   <option value="sales_manager">Sales Manager</option>
                   <option value="sales_executive">Sales Executive</option>
+                  <option value="admin">Admin</option>
                 </select>
               </div>
 
