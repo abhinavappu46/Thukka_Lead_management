@@ -11,13 +11,14 @@ function LeadDetailsModal({
   onAddNoteClick,
   onScheduleFollowUpClick,
   onMarkConverted,
-  onMarkLost
+  onMarkLost,
+  OpenWhatsapp
 }) {
   if (!enquiry) return null;
 
   return (
     <div className="modal-backdrop-common" style={{ zIndex: 1000, }}>
-      <div className="modal-container-common" style={{ maxWidth: "700px", maxHeight: "80vh", overflowY: "auto" }}>
+      <div className="modal-container-common" style={{ maxWidth: "100vw", maxHeight: "100vh", overflowY: "auto" }}>
         <div className="modal-header-common justify-between flex">
           <h3>Lead File: {enquiry.customerName} ({enquiry.enquiryNumber})</h3>
           <button onClick={onClose} className="close-btn">×</button>
@@ -41,7 +42,7 @@ function LeadDetailsModal({
               <span className="lbl">Status</span>
               <p className="val d-flex align-center gap-10">
                 <EnquiryStatusBadge status={enquiry.status} />
-                {role === 'executive' && (
+                {role === "executive" && (
                   <button
                     onClick={() => onEditStatusClick(enquiry.status)}
                     className="edit-status-quick-btn"
@@ -76,6 +77,12 @@ function LeadDetailsModal({
                 className="w-btn note"
               >
                 <Plus size={14} /> Add Note
+              </button>
+              <button
+                onClick={onScheduleFollowUpClick}
+                className="w-btn followup"
+              >
+                <Calendar size={14} /> Schedule Follow-up
               </button>
               <button
                 onClick={onScheduleFollowUpClick}

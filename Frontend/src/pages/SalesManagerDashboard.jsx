@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { RefreshCw, ShieldAlert, Users, MessageSquare, Calendar, TrendingUp, DollarSign, CheckCircle } from "lucide-react";
+import { RefreshCw, ShieldAlert, Users, MessageSquare, Calendar, TrendingUp, DollarSign, CheckCircle, Plus } from "lucide-react";
 import api from "../Api/axios";
 import { KpiCard, ConfirmationModal, LoadingState } from "../components/Common";
 import "./SalesManagerDashboard.css";
@@ -13,13 +13,17 @@ import EnquiriesTab from "../components/Dashboards/shared/EnquiriesTab";
 // Shared Modals
 import LeadDetailsModal from "../components/Dashboards/shared/modals/LeadDetailsModal";
 import AssignLeadModal from "../components/Dashboards/shared/modals/AssignLeadModal";
+import AddEnquiryModel from "../components/Dashboards/shared/modals/AddEnquiryModel";
+import AddEnquiry from "../service/AddEnquiry";
 
 function SalesManagerDashboard({ tab }) {
   const activeTab = tab || "overview";
   const [loading, setLoading] = useState(true);
   const [enquiries, setEnquiries] = useState([]);
   const [executives, setExecutives] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
+  const [succ, setSucc] = useState("");
+  const [AddLoading, setAddLoading] = useState(false);
 
   // Selection for Assignment Modal
   const [selectedEnquiry, setSelectedEnquiry] = useState(null);
@@ -29,6 +33,32 @@ function SalesManagerDashboard({ tab }) {
 
   // Detail Modal
   const [viewEnquiryDetails, setViewEnquiryDetails] = useState(null);
+
+  // Add Lead Modal
+  const [showAddLeadModal, setShowAddLeadModal] = useState(false);
+
+
+  const handleAddEnquiry = async (enquiryData) => {
+    setAddLoading(true);
+    try {
+      const response = await AddEnquiry(enquiryData);
+      setSucc(response.message);
+      setError("");
+      fetchData();
+    } catch (err) {
+      console.error("Error adding enquiry:", error);
+      setError(err.response?.data?.message || "Failed to add enquiry. Please try again.");
+      setSucc("");
+    } finally {
+      setAddLoading(false);
+      setTimeout(() => {
+        setShowAddLeadModal(false);
+        setSucc("");
+        setError("");
+      }, 3000);
+    }
+
+  };
 
   // Fetch initial data
   const fetchData = async () => {
@@ -161,6 +191,14 @@ function SalesManagerDashboard({ tab }) {
           <p className="welcome-subtitle">Team sales overview and enquiry performance dashboard.</p>
         </div>
         <div className="header-actions">
+          <button
+            onClick={() => setShowAddLeadModal(true)}
+            className="add-lead-btn"
+            title="Add New Lead"
+          >
+            <Plus size={16} />
+            <span>Add Lead</span>
+          </button>
           <button onClick={fetchData} className="refresh-btn" title="Refresh Dashboard Data">
             <RefreshCw size={16} />
           </button>
@@ -303,6 +341,18 @@ function SalesManagerDashboard({ tab }) {
           enquiry={viewEnquiryDetails}
           role="manager"
           onClose={() => setViewEnquiryDetails(null)}
+        />
+      )}
+
+      {/* Add Lead Modal */}
+      {showAddLeadModal && (
+        <AddEnquiryModel
+          onClose={() => setShowAddLeadModal(false)}
+          onSave={(enquiryData) => { handleAddEnquiry(enquiryData) }}
+          executives={executives}
+          onSuccess={succ}
+          onFail={error}
+          isLoading={AddLoading}
         />
       )}
     </div>

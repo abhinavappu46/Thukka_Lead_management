@@ -20,12 +20,12 @@ function AssignLeadModal({ enquiry, executives, onClose, onSave }) {
             <p style={{ marginBottom: "16px", fontSize: "13.5px" }}>
               Select a Sales Executive to handle the enquiry <strong className="text-emerald-400">{enquiry?.enquiryNumber}</strong>.
             </p>
-            
+
             <div className="form-field-assignment">
               <label className="field-label-common">Select Sales Executive</label>
-              <select 
+              <select
                 className="exec-select-dropdown"
-                value={selectedExecId} 
+                value={selectedExecId}
                 onChange={(e) => setSelectedExecId(e.target.value)}
                 style={{ width: "100%", marginTop: "4px" }}
               >
@@ -37,16 +37,16 @@ function AssignLeadModal({ enquiry, executives, onClose, onSave }) {
             </div>
           </div>
           <div className="modal-footer-common">
-            <button 
+            <button
               type="button"
-              onClick={onClose} 
+              onClick={onClose}
               className="modal-btn-cancel"
             >
               Cancel
             </button>
-            <button 
+            <button
               type="submit"
-              disabled={!selectedExecId} 
+              disabled={!selectedExecId}
               className="modal-btn-confirm"
             >
               {enquiry?.assignedTo ? "Reassign Lead" : "Confirm Assignment"}

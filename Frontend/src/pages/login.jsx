@@ -5,8 +5,8 @@ import "./login.css";
 import api from "../Api/axios";
 import logo from "./../assets/logo-header.png"
 function Login() {
-  const [email, setEmail] = useState('admin@thukka.com');
-  const [password, setPassword] = useState('password');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
@@ -90,7 +90,7 @@ function Login() {
               required
               className="login-input"
               placeholder="name@company.com"
-              // value={email}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -108,7 +108,7 @@ function Login() {
                 required
                 className="login-input"
                 placeholder="••••••••"
-                // value={password}
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ paddingRight: '2.5rem' }}
               />

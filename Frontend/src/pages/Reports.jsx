@@ -71,7 +71,7 @@ function Reports() {
       <div className="rep-header">
         <div className="rep-title-box">
           <h1 className="rep-title">Performance Reports</h1>
-          <p className="rep-subtitle">Analyze sales conversion rates, lead pipelines, and monthly revenue performance.</p>
+          {/* <p className="rep-subtitle">Analyze sales conversion rates, lead pipelines, and monthly revenue performance.</p> */}
         </div>
         <button className="rep-export-btn">
           <Download size={16} />
@@ -79,76 +79,7 @@ function Reports() {
         </button>
       </div>
 
-      {/* Overview Cards */}
-      <div className="rep-stats-row">
-        {/* Card 1 */}
-        <div className="rep-stat-card">
-          <div className="rep-stat-main">
-            <div className="rep-stat-header">
-              <div>
-                <span className="rep-stat-label">Conversion Rate</span>
-                <h2 className="rep-stat-value">{conversionRate}%</h2>
-              </div>
-              <div className="rep-stat-icon bg-emerald-950/40 border-emerald-800/80 text-emerald-400">
-                <TrendingUp size={20} />
-              </div>
-            </div>
-          </div>
-          <div className="rep-stat-footer">
-            <span className={`rep-stat-trend ${conversionRateTrend >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-              {conversionRateTrend >= 0 ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
-              {conversionRateTrend >= 0 ? `+${conversionRateTrend}%` : `${conversionRateTrend}%`}
-            </span>
-            <span className="rep-stat-comparison">vs previous month</span>
-          </div>
-        </div>
 
-        {/* Card 2 */}
-        <div className="rep-stat-card">
-          <div className="rep-stat-main">
-            <div className="rep-stat-header">
-              <div>
-                <span className="rep-stat-label">Avg Deal Size</span>
-                <h2 className="rep-stat-value">${avgDealSize.toLocaleString()}</h2>
-              </div>
-              <div className="rep-stat-icon bg-teal-950/40 border-teal-800/80 text-teal-400">
-                <DollarSign size={20} />
-              </div>
-            </div>
-          </div>
-          <div className="rep-stat-footer">
-            <span className={`rep-stat-trend ${avgDealSizeTrend >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-              {avgDealSizeTrend >= 0 ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
-              {avgDealSizeTrend >= 0 ? `+${avgDealSizeTrend}%` : `${avgDealSizeTrend}%`}
-            </span>
-            <span className="rep-stat-comparison">vs previous month</span>
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="rep-stat-card">
-          <div className="rep-stat-main">
-            <div className="rep-stat-header">
-              <div>
-                <span className="rep-stat-label">Active Sales Cycle</span>
-                <h2 className="rep-stat-value">{activeSalesCycle} Days</h2>
-              </div>
-              <div className="rep-stat-icon bg-green-950/40 border-green-800/80 text-green-400">
-                <Users size={20} />
-              </div>
-            </div>
-          </div>
-          <div className="rep-stat-footer">
-            <span className={`rep-stat-trend ${activeSalesCycleTrend <= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-              {activeSalesCycleTrend <= 0 ? <ArrowDownRight size={14} /> : <ArrowUpRight size={14} />}
-              {activeSalesCycleTrend <= 0 ? `${activeSalesCycleTrend} Days` : `+${activeSalesCycleTrend} Days`}
-            </span>
-            <span className="rep-stat-comparison">
-              {activeSalesCycleTrend <= 0 ? "shorter sales pipeline" : "longer sales pipeline"}
-            </span>
-          </div>
-        </div>
-      </div>
 
       {/* Visualizers Card */}
       <div className="rep-visualizer-grid">
@@ -188,16 +119,16 @@ function Reports() {
               <svg className="rep-donut-chart" viewBox="0 0 36 36">
                 <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#1e293b" strokeWidth="3"></circle>
                 {/* Segment Website */}
-                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#10b981" strokeWidth="3" 
+                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#10b981" strokeWidth="3"
                   strokeDasharray={`${websitePct} ${100 - websitePct}`} strokeDashoffset="0" className="rep-donut-circle-segment"></circle>
                 {/* Segment LinkedIn */}
-                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#059669" strokeWidth="3" 
+                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#059669" strokeWidth="3"
                   strokeDasharray={`${linkedinPct} ${100 - linkedinPct}`} strokeDashoffset={`-${websitePct}`} className="rep-donut-circle-segment"></circle>
                 {/* Segment Google */}
-                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#34d399" strokeWidth="3" 
+                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#34d399" strokeWidth="3"
                   strokeDasharray={`${googlePct} ${100 - googlePct}`} strokeDashoffset={`-${websitePct + linkedinPct}`} className="rep-donut-circle-segment"></circle>
                 {/* Segment Referral */}
-                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#047857" strokeWidth="3" 
+                <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#047857" strokeWidth="3"
                   strokeDasharray={`${referralPct} ${100 - referralPct}`} strokeDashoffset={`-${websitePct + linkedinPct + googlePct}`} className="rep-donut-circle-segment"></circle>
               </svg>
               <div className="rep-donut-label">

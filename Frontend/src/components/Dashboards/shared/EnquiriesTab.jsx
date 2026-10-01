@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Filter, Phone, Mail, UserPlus } from 'lucide-react';
+import { Search, Filter, Phone, Mail, UserPlus, MessageSquare } from 'lucide-react';
 import { PriorityBadge, EnquiryStatusBadge, EmptyState } from '../../Common';
 
 function EnquiriesTab({
@@ -9,7 +9,9 @@ function EnquiriesTab({
   onViewDetails,
   onAssign,
   onTriggerCall,
-  onTriggerEmail
+  onTriggerEmail,
+  ontriggerWohatsapp,
+  onEdit
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('All');
@@ -105,6 +107,7 @@ function EnquiriesTab({
               {role === 'manager' && <th>Assigned Executive</th>}
               {role === 'executive' && <th>Contact Actions</th>}
               <th>Actions</th>
+              {role === 'executive' && <th> Edit enquiry</th>}
             </tr>
           </thead>
           <tbody>
@@ -142,6 +145,9 @@ function EnquiriesTab({
                         <button onClick={() => onTriggerEmail(enq.email, enq)} className="contact-btn email" title="Email Customer">
                           <Mail size={13} /> Email
                         </button>
+                        <button onClick={() => ontriggerWohatsapp(enq.phone, enq)} className="contact-btn phone" title="Whatsapp Customer">
+                          <MessageSquare size={13} /> Whatsapp
+                        </button>
                       </div>
                     </td>
                   )}
@@ -166,6 +172,16 @@ function EnquiriesTab({
                       </button>
                     )}
                   </td>
+
+                  {role === 'executive' && (
+                    <td>
+                      <div className="table-row-actions">
+                        <button onClick={() => onEdit(enq)} className="details-btn-action">
+                          Edit
+                        </button>
+                      </div>
+                    </td>
+                  )}
                 </tr>
               ))
             ) : (

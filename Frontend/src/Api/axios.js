@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://prod-backend-lead.thuka.in/api",
+  baseURL: 'https://prod-backend-lead.thuka.in/api'
+
 });
 
 api.interceptors.request.use(

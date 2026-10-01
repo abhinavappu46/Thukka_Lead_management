@@ -277,6 +277,7 @@ function Enquiries() {
                 <th className="enq-th">Status</th>
                 <th className="enq-th">Date Added</th>
                 <th className="enq-th text-center">Actions</th>
+                <th className="enq-th ">Full Details</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800 text-sm text-slate-300">
@@ -535,13 +536,13 @@ function Enquiries() {
                   onChange={(e) => setEditAssignedTo(e.target.value)}
                 >
                   <option value="">-- Keep Unassigned / Current --</option>
-                  <optgroup label="Sales Executives">
+                  {/* <optgroup label="Sales Executives">
                     {executives.map((exec) => (
                       <option key={exec._id} value={exec._id}>
                         {exec.name} ({exec.email})
                       </option>
                     ))}
-                  </optgroup>
+                  </optgroup> */}
                   <optgroup label="Managers">
                     {managers.map((man) => (
                       <option key={man._id} value={man._id}>

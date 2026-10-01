@@ -123,10 +123,10 @@
   border-color: rgba(16, 185, 129, 0.35);
 }
 
-/* .stat-card-highlight:hover {
+.stat-card-highlight:hover {
   border-color: rgba(16, 185, 129, 0.6);
   box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.45), 0 0 20px rgba(16, 185, 129, 0.2);
-} */
+}
 
 .stat-card-top {
   display: flex;

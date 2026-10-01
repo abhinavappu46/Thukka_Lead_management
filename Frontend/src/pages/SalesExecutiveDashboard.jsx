@@ -16,12 +16,15 @@ import StatusUpdateModal from "../components/Dashboards/shared/modals/StatusUpda
 import AddActivityModal from "../components/Dashboards/shared/modals/AddActivityModal";
 import ScheduleFollowUpModal from "../components/Dashboards/shared/modals/ScheduleFollowUpModal";
 import OutcomeConfirmModal from "../components/Dashboards/shared/modals/OutcomeConfirmModal";
+import EditEnquiryModal from "../components/Dashboards/shared/modals/EditEnquiryModal";
 
 function SalesExecutiveDashboard({ tab }) {
   const activeTab = tab || "overview";
   const [loading, setLoading] = useState(true);
+  const [editLoading, setEditLoading] = useState(false);
   const [enquiries, setEnquiries] = useState([]);
   const [error, setError] = useState(null);
+  const [Success, setSuccess] = useState("");
 
   // Selection for operations
   const [selectedEnquiry, setSelectedEnquiry] = useState(null);
@@ -29,6 +32,8 @@ function SalesExecutiveDashboard({ tab }) {
   // Form Modals Display States
   const [showStatusModal, setShowStatusModal] = useState(false);
   const [statusForm, setStatusForm] = useState("");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [viewDetails, setViewDetails] = useState(false);
 
   const [showActivityModal, setShowActivityModal] = useState(false);
   const [activityDefaultType, setActivityDefaultType] = useState("Call");
@@ -95,6 +100,34 @@ function SalesExecutiveDashboard({ tab }) {
       alert(err.response?.data?.message || "Failed to update status.");
     }
   };
+  const handleEditEnquiry = async (enquiryData) => {
+    if (!selectedEnquiry || !enquiryData) return;
+    setEditLoading(true);
+    setSuccess("");
+
+    try {
+      const response = await api.put(`/Enquiry/enquiry/${selectedEnquiry.enquiryNumber}`, enquiryData);
+
+      if (response.data.success) {
+        const updated = response.data.enquiry;
+        setEnquiries(prev => prev.map(e =>
+          e.enquiryNumber === selectedEnquiry.enquiryNumber ? updated : e
+        ));
+        setSelectedEnquiry(updated);
+        setSuccess("Enquiry updated successfully.");
+
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || "Failed to edit enquiry.");
+    }
+    finally {
+      setEditLoading(false);
+      setTimeout(() => {
+        setSuccess("");
+        setError("");
+      }, 5000);
+    }
+  };
 
   const handleAddActivity = async (activityType, notes) => {
     if (!selectedEnquiry || !notes) return;
@@ -150,16 +183,19 @@ function SalesExecutiveDashboard({ tab }) {
     window.open(`tel:${phone}`);
     setSelectedEnquiry(enq);
     setActivityDefaultType("Call");
-    setShowActivityModal(true);
   };
 
   const triggerEmail = (email, enq) => {
     window.open(`mailto:${email}`);
     setSelectedEnquiry(enq);
     setActivityDefaultType("Email");
-    setShowActivityModal(true);
   };
+  const OpenWhatsapp = (phone, enq) => {
+    window.open(`https://wa.me/${phone}`);
+    setSelectedEnquiry(enq);
+    setActivityDefaultType("Whatsapp");
 
+  };
   // Calculate Metrics
   const totalMyEnqs = enquiries.length;
   const pendingFollowups = enquiries.filter(e => {
@@ -232,7 +268,10 @@ function SalesExecutiveDashboard({ tab }) {
           pipelineStages={pipelineStages}
           todayFollowUps={todayFollowUps}
           enquiries={enquiries}
-          onViewDetails={setSelectedEnquiry}
+          onViewDetails={(enq) => {
+            setSelectedEnquiry(enq);
+            setViewDetails(true);
+          }}
         />
       )}
 
@@ -240,9 +279,17 @@ function SalesExecutiveDashboard({ tab }) {
         <EnquiriesTab
           enquiries={enquiries}
           role="executive"
-          onViewDetails={setSelectedEnquiry}
+          onViewDetails={(enq) => {
+            setSelectedEnquiry(enq);
+            setViewDetails(true);
+          }}
+          onEdit={(enq) => {
+            setSelectedEnquiry(enq);
+            setShowEditModal(true);
+          }}
           onTriggerCall={triggerCall}
           onTriggerEmail={triggerEmail}
+          ontriggerWohatsapp={OpenWhatsapp}
         />
       )}
 
@@ -287,11 +334,11 @@ function SalesExecutiveDashboard({ tab }) {
       )}
 
       {/* Complete Lead Details / Action Workspace Modal */}
-      {selectedEnquiry && (
+      {viewDetails && (
         <LeadDetailsModal
           enquiry={selectedEnquiry}
           role="executive"
-          onClose={() => setSelectedEnquiry(null)}
+          onClose={() => setViewDetails(false)}
           onEditStatusClick={(currentStatus) => {
             setStatusForm(currentStatus);
             setShowStatusModal(true);
@@ -357,6 +404,17 @@ function SalesExecutiveDashboard({ tab }) {
             setShowOutcomeConfirm(false);
           }}
           onConfirm={(reason) => handleUpdateStatus(statusForm, reason)}
+        />
+      )}
+      {showEditModal && (
+        <EditEnquiryModal
+          onClose={() => setShowEditModal(false)}
+          selectedEnquiry={selectedEnquiry}
+          onSave={handleEditEnquiry}
+          loading={editLoading}
+          success={Success}
+          error={error}
+
         />
       )}
     </div>
