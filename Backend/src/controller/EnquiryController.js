@@ -55,6 +55,62 @@ const createEnquiry = async (req, res) => {
   }
 };
 
+const createEnquiryAdmin = async (req, res) => {
+  try {
+    const {
+      customerName,
+      phone,
+      email,
+      source,
+      notes,
+      companyName,
+      priority,
+      assignedTo
+    } = req.body;
+
+    if (!customerName || !phone) {
+      return res.status(400).json({
+        success: false,
+        message: "Customer name and phone are required"
+      });
+    }
+    const enquiryCount = await Enquiry.countDocuments();
+    const enquiryNumber = `ENQ-${String(enquiryCount + 1).padStart(4, "0")}`;
+
+    const enquiry = await Enquiry.create({
+      enquiryNumber,
+      customerName,
+      phone,
+      email,
+      source,
+      notes: notes || "",
+      companyName: companyName || "",
+      priority: priority || "Warm",
+      assignedTo: assignedTo || null,
+      assignedManager: req.user.id,
+      createdBy: req.user.id,
+      activities: [{
+        activityType: "Note",
+        notes: `Enquiry created via ${source || "other"}.`,
+        performedBy: req.user.id
+      }]
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Enquiry created successfully",
+      enquiry
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to create enquiry",
+      error: error.message
+    });
+  }
+};
+
 
 
 
@@ -848,5 +904,6 @@ module.exports = {
   getAdminStats,
   getActivityLogs,
   completeFollowUp,
-  getReportsStats
+  getReportsStats,
+  createEnquiryAdmin
 };

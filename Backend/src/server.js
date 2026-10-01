@@ -14,10 +14,7 @@ app.use(express.json());
 
 Dbconnect();
 
-app.use((req, res, next) => {
-    console.log("REQUEST:", req.method, req.originalUrl);
-    next();
-});
+
 app.use("/api/auth", Registeroute);
 app.use("/api/auth", LoginRoute);
 app.use("/api/user", UsersRoute);

@@ -4,7 +4,7 @@ const router = express.Router();
 const AuthMiddleware = require("../middleware/AuthMiddleware");
 const roleMiddleware = require("../middleware/RoleAuthMiddleware");
 
-const { createEnquiry, getAllEnquiries, getEnquiryById, updateEnquiry, assignEnquiry, addActivity, scheduleFollowUp, updateStatus, getAdminStats, getActivityLogs, completeFollowUp, getReportsStats } = require("../controller/EnquiryController");
+const { createEnquiry, getAllEnquiries, getEnquiryById, updateEnquiry, assignEnquiry, addActivity, scheduleFollowUp, updateStatus, getAdminStats, getActivityLogs, completeFollowUp, getReportsStats, createEnquiryAdmin } = require("../controller/EnquiryController");
 
 router.post(
   "/",
@@ -15,6 +15,14 @@ router.post(
     "sales_executive"
   ]),
   createEnquiry
+);
+router.post(
+  "/manager/enquiry",
+  AuthMiddleware,
+  roleMiddleware([
+    "sales_manager"
+  ]),
+  createEnquiryAdmin
 );
 
 router.get(
